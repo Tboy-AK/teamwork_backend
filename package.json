@@ -1,0 +1,22 @@
+{
+  "name": "teamwork_backend",
+  "version": "1.0.0",
+  "description": "The backend of my DevC Teamwork project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tboy-AK/teamwork_backend.git"
+  },
+  "author": "Akanji Oluwatobiloba",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tboy-AK/teamwork_backend/issues"
+  },
+  "homepage": "https://github.com/Tboy-AK/teamwork_backend#readme",
+  "devDependencies": {
+    "eslint": "^6.6.0"
+  }
+}
