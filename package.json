@@ -4,7 +4,7 @@
   "description": "The backend of my DevC Teamwork project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Tboy-AK/teamwork_backend#readme",
   "devDependencies": {
-    "eslint": "^6.6.0"
+    "eslint": "^6.6.0",
+    "jasmine": "^3.5.0"
   }
 }
