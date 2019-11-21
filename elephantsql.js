@@ -15,11 +15,12 @@ const conObj = {
 //  const client = new pg.Client(conString);
 const pool = new pg.Pool(conObj);
 
-pool.query('SELECT NOW() AS "theTime"', (err, result) => {
+/* pool.query('SELECT NOW() AS "theTime"', (err, result) => {
   if (err) {
     return console.error('error running query', err);
   }
   console.log(result.rows[0].theTime);
-  // >> output: 2018-08-23T14:02:57.117Z
   pool.end();
-});
+}); */
+
+module.exports = pool;

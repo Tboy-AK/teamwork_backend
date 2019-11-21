@@ -4,7 +4,8 @@
   "description": "The backend of my DevC Teamwork project.",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test-init": "./node_modules/jasmine/bin/jasmine.js init",
+    "test": "./node_modules/jasmine/bin/jasmine.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +24,12 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
-    "jasmine": "^3.5.0"
+    "jasmine": "^3.5.0",
+    "nodemon": "^2.0.0"
   },
   "dependencies": {
-    "pg": "^7.12.1"
+    "express": "^4.17.1",
+    "pg": "^7.12.1",
+    "request": "^2.88.0"
   }
 }
