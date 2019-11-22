@@ -212,10 +212,10 @@ describe('Server', () => {
     });
   });
 
-  /* describe('GET /articles/:articleId', () => {
+  describe('GET /articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
-      Request.get('http://localhost:3000/api/v1/articles/1', (error, response, body) => {
+      Request.get('http://localhost:3000/api/v1/articles/2', (error, response, body) => {
         data.status = response.statusCode;
         data.body = JSON.parse(body);
         done();
@@ -225,11 +225,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('view a specific article');
+      expect(data.body.status).toBe('success');
     });
   });
 
-  describe('GET /gifs/:gifId', () => {
+  /* describe('GET /gifs/:gifId', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1/gifs/1', (error, response, body) => {

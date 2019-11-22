@@ -87,8 +87,28 @@ router.delete('/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  employees can view a specific article
-router.get('/articles/:id', (req, resp) => {
-  resp.json({ message: 'view a specific article' });
+router.get('/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (errAuth) => {
+    if (errAuth) { resp.status(403); } else {
+      const id = parseInt(req.params.id, 10);
+      pool.query('SELECT * FROM articles WHERE id=$1;', [id], (errArticle, resArticle) => {
+        if (errArticle) { throw errArticle; }
+        pool.query('SELECT comment_id, comment, author_id FROM article_comments WHERE article_id=$1;', [id], (errComment, resComment) => {
+          if (errComment) { throw errComment; }
+          resp.status(200).send({
+            status,
+            data: {
+              id: resArticle.rows[0].id,
+              createdOn: resArticle.rows[0].created_on,
+              title: resArticle.rows[0].title,
+              article: resArticle.rows[0].article,
+              comments: resComment.rows,
+            },
+          });
+        });
+      });
+    }
+  });
 });
 
 //  employees can comment on other colleagues' article post
