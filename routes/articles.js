@@ -92,9 +92,39 @@ router.get('/articles/:id', (req, resp) => {
 });
 
 //  employees can comment on other colleagues' article post
-router.post('/articles/:id/comments', (req, resp) => {
-  message = 'Comment successfully created';
-  resp.json({ message });
+router.post('/articles/:id/comments', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = 'Comment successfully created';
+      const { comment } = req.body;
+      const articleID = parseInt(req.params.id, 10);
+      const createdOn = new Date();
+
+      pool.query('SELECT a.title, a.article FROM articles AS a WHERE id=$1', [articleID], (errorArticle, resArticle) => {
+        if (errorArticle) { throw errorArticle; }
+        const { title, article } = resArticle.rows[0];
+        pool.query('SELECT user_id FROM users WHERE email=$1', [authData.email], (errorID, resID) => {
+          if (errorID) { throw errorID; }
+          const commentatorID = resID.rows[0].user_id;
+          pool.query('INSERT INTO article_comments (created_on, article_title, article, article_id, comment, author_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+            [createdOn.toLocaleDateString(), title, article, articleID, comment, commentatorID],
+            (error, res) => {
+              if (error) { throw error; }
+              resp.status(201).send({
+                status,
+                data: {
+                  message,
+                  createdOn: res.rows[0].created_on,
+                  articleTitle: res.rows[0].title,
+                  article: res.rows[0].article,
+                  comment: res.rows[0].comment,
+                },
+              });
+            });
+        });
+      });
+    }
+  });
 });
 
 module.exports = router;
