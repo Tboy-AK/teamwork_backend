@@ -90,8 +90,28 @@ router.delete('/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  employees can view a specific gif
-router.get('/gifs/:id', (req, resp) => {
-  resp.json({ message: 'view a specific gif' });
+router.get('/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (errAuth) => {
+    if (errAuth) { resp.status(403); } else {
+      const id = parseInt(req.params.id, 10);
+      pool.query('SELECT * FROM gifs WHERE id=$1;', [id], (errGif, resGif) => {
+        if (errGif) { throw errGif; }
+        pool.query('SELECT id, comment, author_id FROM gif_comments WHERE gif_id=$1;', [id], (errComment, resComment) => {
+          if (errComment) { throw errComment; }
+          resp.status(200).send({
+            status,
+            data: {
+              id: resGif.rows[0].id,
+              createdOn: resGif.rows[0].created_on,
+              title: resGif.rows[0].title,
+              url: resGif.rows[0].image_url,
+              comments: resComment.rows,
+            },
+          });
+        });
+      });
+    }
+  });
 });
 
 //  employees can comment on other colleagues' gif post

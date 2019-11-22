@@ -229,7 +229,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('GET /gifs/:gifId', () => {
+  describe('GET /gifs/:gifId', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1/gifs/1', (error, response, body) => {
@@ -242,11 +242,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('view a specific gif');
+      expect(data.body.status).toBe('success');
     });
   });
 
-  describe('PATCH /flag/articles/:articleId', () => {
+  /* describe('PATCH /flag/articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.patch('http://localhost:3000/api/v1/flag/articles/1', (error, response, body) => {
