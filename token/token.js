@@ -22,6 +22,8 @@ const verifyToken = (req, resp, next) => {
   }
 };
 
+const cloudinaryCred = { cloud_name: 'tboy1ak', api_key: '669164433331693', api_secret: '4ouIsOPtaEGEGDBNRwQqexoXNm0' };
+
 const adminLoginForm = {
   email: 'tobia807@gmail.com',
   password: 'xxxentric4321',
@@ -34,4 +36,6 @@ module.exports = {
   exp,
   verifyToken,
   bcrypt,
+  cloudinaryCred,
+  path,
 };

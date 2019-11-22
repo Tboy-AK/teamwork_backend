@@ -76,7 +76,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('POST /gifs', () => {
+  describe('POST /gifs', () => {
     const data = {};
     beforeAll((done) => {
       Request.post('http://localhost:3000/api/v1/gifs', (error, response, body) => {
@@ -89,11 +89,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Gif image successfully posted');
+      expect(data.body.data.message).toBe('GIF image successfully posted');
     });
   });
 
-  describe('POST /articles', () => {
+  /* describe('POST /articles', () => {
     const data = {};
     beforeAll((done) => {
       Request.post('http://localhost:3000/api/v1/articles', (error, response, body) => {
