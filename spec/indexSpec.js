@@ -93,7 +93,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('POST /articles', () => {
+  describe('POST /articles', () => {
     const data = {};
     beforeAll((done) => {
       Request.post('http://localhost:3000/api/v1/articles', (error, response, body) => {
@@ -106,11 +106,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Article successfully posted');
+      expect(data.body.data.message).toBe('Article successfully posted');
     });
   });
 
-  describe('PATCH /articles/:articleId', () => {
+  /* describe('PATCH /articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.patch('http://localhost:3000/api/v1/articles/1', (error, response, body) => {
