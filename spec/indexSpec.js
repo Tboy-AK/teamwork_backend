@@ -195,7 +195,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('GET /feed', () => {
+  describe('GET /feed', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1/feed', (error, response, body) => {
@@ -208,11 +208,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('All feed');
+      expect(data.body.status).toBe('success');
     });
   });
 
-  describe('GET /articles/:articleId', () => {
+  /* describe('GET /articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1/articles/1', (error, response, body) => {
