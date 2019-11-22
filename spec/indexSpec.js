@@ -127,7 +127,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('DELETE /articles/:articleId', () => {
+  describe('DELETE /articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/articles/1', (error, response, body) => {
@@ -140,11 +140,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Article successfully deleted');
+      expect(data.body.data.message).toBe('Article successfully deleted');
     });
   });
 
-  describe('DELETE /gifs/:gifId', () => {
+  /* describe('DELETE /gifs/:gifId', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/gifs/1', (error, response, body) => {

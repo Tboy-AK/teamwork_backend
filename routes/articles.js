@@ -66,9 +66,24 @@ router.patch('/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  employees can delete their articles
-router.delete('/articles/:id', (req, resp) => {
-  message = 'Article successfully deleted';
-  resp.json({ message });
+router.delete('/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = 'Article successfully deleted';
+      const id = parseInt(req.params.id, 10);
+
+      pool.query('SELECT * FROM articles WHERE articles.id=$1 AND author_id IN (SELECT user_id FROM users WHERE email=$2);',
+        [id, authData.email], (errAuth, resAuth) => {
+          if (errAuth) { throw errAuth; } else if (resAuth.rows.length !== 0) {
+            pool.query('DELETE FROM articles WHERE articles.id=$1 AND author_id=$2',
+              [id, resAuth.rows[0].author_id], (error) => {
+                if (error) { throw error; }
+                resp.status(200).send({ status, data: { message } });
+              });
+          } else resp.send('Unauthorized access!');
+        });
+    }
+  });
 });
 
 //  employees can view a specific article
