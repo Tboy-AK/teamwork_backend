@@ -38,13 +38,27 @@ router.post('/auth/create-user', tokenOrigin.verifyToken, (req, resp) => {
             data: { message, token: res.rows[0].token, userId: res.rows[0].user_id },
           });
         });
-    } else resp.send(authData.admin);
+    } else resp.json({ info: 'Unauthorized Admin Access!' });
   });
 });
 
 //  admin and employees can sign in
 router.post('/auth/signin', (req, resp) => {
-  resp.json({ message: 'successfully signed in' });
+  const { email, password } = req.body;
+
+  pool.query('SELECT user_id, email, password, admin from users WHERE email=$1', [email], (err, res) => {
+    if (err) { throw err; }
+    if (res.rows.length !== 0) {
+      const passwordState = tokenOrigin.bcrypt.compareSync(password, res.rows[0].password);
+      if (passwordState === true) {
+        const token = tokenOrigin.jwt.sign({ email, password, admin: res.rows[0].admin }, tokenOrigin.tokenKeys.keyPrivate, { expiresIn: tokenOrigin.exp });
+        resp.status(200).send({
+          status,
+          data: { token, userId: res.rows[0].user_id },
+        });
+      } else resp.json({ info: 'Incorrect password' });
+    } else resp.json({ info: 'email not recognised' });
+  });
 });
 
 module.exports = router;
