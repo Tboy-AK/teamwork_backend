@@ -110,7 +110,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('PATCH /articles/:articleId', () => {
+  describe('PATCH /articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.patch('http://localhost:3000/api/v1/articles/1', (error, response, body) => {
@@ -123,11 +123,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Article successfully updated');
+      expect(data.body.data.message).toBe('Article successfully updated');
     });
   });
 
-  describe('DELETE /articles/:articleId', () => {
+  /* describe('DELETE /articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/articles/1', (error, response, body) => {

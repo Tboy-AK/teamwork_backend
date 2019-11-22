@@ -35,10 +35,33 @@ router.post('/articles', tokenOrigin.verifyToken, (req, resp) => {
   });
 });
 
-//  employees can edit their articles
-router.patch('/articles/:id', (req, resp) => {
-  message = 'Article successfully updated';
-  resp.json({ message });
+// employees can edit their articles
+router.patch('/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = 'Article successfully updated';
+      const id = parseInt(req.params.id, 10);
+      const { title, article } = req.body;
+
+      pool.query('SELECT * FROM articles WHERE articles.id=$1 AND author_id IN (SELECT user_id FROM users WHERE email=$2);',
+        [id, authData.email], (errAuth, resAuth) => {
+          if (errAuth) { throw errAuth; } else if (resAuth.rows.length !== 0) {
+            pool.query('UPDATE articles SET title=$1, article=$2 WHERE id=$3 AND author_id=$4 RETURNING *',
+              [title, article, id, resAuth.rows[0].author_id], (error, res) => {
+                if (error) { throw error; }
+                resp.status(201).send({
+                  status,
+                  data: {
+                    message,
+                    title: res.rows[0].title,
+                    article: res.rows[0].article,
+                  },
+                });
+              });
+          } else resp.send('Unauthorized access!');
+        });
+    }
+  });
 });
 
 //  employees can delete their articles
