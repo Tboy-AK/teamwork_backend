@@ -1,9 +1,10 @@
 const { router } = require('../router');
 const pool = require('../elephantsql');
+const tokenOrigin = require('../token/token');
 
 let message;
 const status = 'success';
-const token = 'token';
+const adminState = [true, false];
 
 router.get('/', (req, resp) => {
   resp.json({
@@ -16,13 +17,32 @@ router.get('/auth/get-users', (req, resp) => {
   resp.json({ message });
 });
 
-/**  admin can create user  */
-router.post('/auth/create-user', (req, resp) => {
-  message = 'User account successfully created';
-  resp.json({ message });
+//  admin can create an employee user account
+router.post('/auth/create-user', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else if (authData.admin === JSON.stringify(adminState[0])) {
+      message = 'User account successfully created';
+      const {
+        firstname, lastname, email, password, gender, jobrole, department, address, admin,
+      } = req.body;
+      const salt = tokenOrigin.bcrypt.genSaltSync(10);
+      const token = tokenOrigin.jwt.sign({ email, password, admin }, tokenOrigin.tokenKeys.keyPrivate, { expiresIn: tokenOrigin.exp });
+      const hash = tokenOrigin.bcrypt.hashSync(password, salt);
+
+      pool.query('INSERT INTO users(firstname, lastname, email, password, gender, jobrole, department, address, token, admin) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *;',
+        [firstname, lastname, email, hash, gender, jobrole, department, address, token, admin],
+        (error, res) => {
+          if (error) { throw error; }
+          resp.status(201).send({
+            status,
+            data: { message, token: res.rows[0].token, userId: res.rows[0].user_id },
+          });
+        });
+    } else resp.send(authData.admin);
+  });
 });
 
-/**  admin and employee can sign in  */
+//  admin and employees can sign in
 router.post('/auth/signin', (req, resp) => {
   resp.json({ message: 'successfully signed in' });
 });
