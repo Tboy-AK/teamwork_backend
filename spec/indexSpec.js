@@ -178,7 +178,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('POST /gifs/:id/comments', () => {
+  describe('POST /gifs/:id/comments', () => {
     const data = {};
     beforeAll((done) => {
       Request.post('http://localhost:3000/api/v1/gifs/1/comments', (error, response, body) => {
@@ -191,11 +191,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Comment successfully created');
+      expect(data.body.data.message).toBe('Comment successfully created');
     });
   });
 
-  describe('GET /feed', () => {
+  /* describe('GET /feed', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1/feed', (error, response, body) => {

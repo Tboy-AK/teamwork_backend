@@ -95,9 +95,38 @@ router.get('/gifs/:id', (req, resp) => {
 });
 
 //  employees can comment on other colleagues' gif post
-router.post('/gifs/:id/comments', (req, resp) => {
-  message = 'Comment successfully created';
-  resp.json({ message });
+router.post('/gifs/:id/comments', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = 'Comment successfully created';
+      const { comment } = req.body;
+      const gifID = parseInt(req.params.id, 10);
+      const createdOn = new Date();
+
+      pool.query('SELECT title from gifs WHERE id=$1', [gifID], (errorGif, resGif) => {
+        if (errorGif) { throw errorGif; }
+        const { title } = resGif.rows[0];
+        pool.query('SELECT user_id from users WHERE email=$1', [authData.email], (errorID, resID) => {
+          if (errorID) { throw errorID; }
+          const commentatorID = resID.rows[0].user_id;
+          pool.query('INSERT INTO gif_comments (created_on, gif_title, gif_id, comment, author_id) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+            [createdOn.toLocaleDateString(), title, gifID, comment, commentatorID],
+            (error, res) => {
+              if (error) { throw error; }
+              resp.status(201).send({
+                status,
+                data: {
+                  message,
+                  createdOn: res.rows[0].created_on,
+                  gifTitle: res.rows[0].gif_title,
+                  comment: res.rows[0].comment,
+                },
+              });
+            });
+        });
+      });
+    }
+  });
 });
 
 module.exports = router;
