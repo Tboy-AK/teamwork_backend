@@ -2,6 +2,7 @@ const { router } = require('../router');
 const pool = require('../elephantsql');
 const tokenOrigin = require('../token/token');
 
+// response message
 let message;
 const status = 'success';
 
