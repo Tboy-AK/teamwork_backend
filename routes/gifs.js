@@ -60,9 +60,33 @@ router.post('/gifs', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  employees can delete their gifs
-router.delete('/gifs/:id', (req, resp) => {
-  message = 'gif post successfully deleted';
-  resp.json({ message });
+router.delete('/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = 'Gif post successfully deleted';
+      const id = parseInt(req.params.id, 10);
+
+      pool.query('SELECT * FROM gifs WHERE gifs.id=$1 AND author_id IN (SELECT user_id FROM users WHERE email=$2);',
+        [id, authData.email], (errAuth, resAuth) => {
+          if (errAuth) { throw errAuth; } else if (resAuth.rows.length !== 0) {
+            pool.query('SELECT image_url FROM gifs WHERE id=$1 AND author_id=$2',
+              [id, resAuth.rows[0].author_id], (error, res) => {
+                if (error) { throw error; }
+                cloudinary.uploader.destroy(res.rows[0].image_url.split('//')[1].split('/')[5].split('.')[0],
+                  (errUpDelete) => {
+                    if (errUpDelete) { throw errUpDelete; } else {
+                      pool.query('DELETE FROM gifs WHERE id=$1 AND author_id=$2',
+                        [id, resAuth.rows[0].author_id], (errDelete) => {
+                          if (errDelete) { throw errDelete; }
+                          resp.status(200).send({ status, data: { message } });
+                        });
+                    }
+                  });
+              });
+          } else resp.send('Unauthorized access!');
+        });
+    }
+  });
 });
 
 //  employees can view a specific gif
