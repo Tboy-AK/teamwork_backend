@@ -246,7 +246,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('PATCH /flag/articles/:articleId', () => {
+  describe('PATCH /flag/articles/:articleId', () => {
     const data = {};
     beforeAll((done) => {
       Request.patch('http://localhost:3000/api/v1/flag/articles/1', (error, response, body) => {
@@ -263,7 +263,7 @@ describe('Server', () => {
     });
   });
 
-  describe('PATCH /flag/articles/:id/comments/:comment_id', () => {
+  /* describe('PATCH /flag/articles/:id/comments/:comment_id', () => {
     const data = {};
     beforeAll((done) => {
       Request.patch('http://localhost:3000/api/v1/flag/articles/1/comments/1', (error, response, body) => {

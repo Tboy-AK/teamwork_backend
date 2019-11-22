@@ -1,13 +1,44 @@
 const { router } = require('../router');
 const pool = require('../elephantsql');
+const tokenOrigin = require('../token/token');
 
 let message;
 const status = 'success';
+const flagState = [true, false];
 
 //  flag article middleware
-router.patch('/flag/articles/:id', (req, resp) => {
-  message = ['Article flagged as inappropriate', 'Article successfully unflagged'];
-  resp.json({ message: message[0] });
+router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err) => {
+    if (err) { resp.status(403); }
+    message = ['Article flagged as inappropriate', 'Article successfully unflagged'];
+    const id = parseInt(req.params.id, 10);
+    const { flag } = req.body;
+    if (flag === 'true') {
+      pool.query('UPDATE articles SET flag=$1 WHERE id=$2 RETURNING *',
+        [flagState[0], id], (error, res) => {
+          if (error) { throw error; }
+          resp.status(201).send({
+            status,
+            data: {
+              message: message[0],
+              articleID: res.rows[0].id,
+            },
+          });
+        });
+    } else if (flag === 'false') {
+      pool.query('UPDATE articles SET flag=$1 WHERE id=$2 RETURNING *',
+        [flagState[1], id], (error, res) => {
+          if (error) { throw error; }
+          resp.status(201).send({
+            status,
+            data: {
+              message: message[1],
+              articleID: res.rows[0].id,
+            },
+          });
+        });
+    } else { resp.end(); }
+  });
 });
 
 //  flag gif middleware
