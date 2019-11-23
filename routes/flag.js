@@ -202,9 +202,20 @@ router.delete('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  delete flagged article comment middleware
-router.delete('/flag/articles/:id/comments/:comment_id', (req, resp) => {
-  message = 'flagged comment successfully deleted';
-  resp.json({ message });
+router.delete('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.sendStatus(403); }
+    if (authData.admin === adminState[0]) {
+      message = 'Comment successfully deleted';
+      const id = parseInt(req.params.id, 10);
+      const commentID = parseInt(req.params.comment_id, 10);
+
+      pool.query('DELETE FROM article_comments WHERE flag=$1 AND comment_id=$2 AND article_id=$3', [flagState[0], commentID, id], (error) => {
+        if (error) { throw error; }
+        resp.status(200).send({ status, data: { message } });
+      });
+    } else resp.send('Unauthorized Admin Access!');
+  });
 });
 
 //  delete flagged gif comment middleware

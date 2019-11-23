@@ -348,7 +348,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('DELETE /flag/articles/:id/comments/:comment_id', () => {
+  describe('DELETE /flag/articles/:id/comments/:comment_id', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/flag/articles/1/comments/1', (error, response, body) => {
@@ -361,11 +361,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('flagged comment successfully deleted');
+      expect(data.body.status).toBe('success');
     });
   });
 
-  describe('DELETE /flag/gifs/:id/comments/:comment_id', () => {
+  /* describe('DELETE /flag/gifs/:id/comments/:comment_id', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/flag/gifs/1/comments/1', (error, response, body) => {
@@ -378,7 +378,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('flagged comment successfully deleted');
+      expect(data.body.status).toBe('success');
     });
   }); */
 });
