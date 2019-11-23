@@ -55,7 +55,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('User account successfully created');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -89,7 +89,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('GIF image successfully posted');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -106,7 +106,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Article successfully posted');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -123,7 +123,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Article successfully updated');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -140,7 +140,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Article successfully deleted');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -157,7 +157,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('gif post successfully deleted');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -174,7 +174,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Comment successfully created');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -191,7 +191,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Comment successfully created');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -259,7 +259,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Article flagged as inappropriate');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -276,7 +276,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Gif flagged as inappropriate');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -293,7 +293,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Comment flagged as inappropriate');
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -310,11 +310,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.data.message).toBe('Comment flagged as inappropriate');
+      expect(data.body.status).toBe('success');
     });
   });
 
-  /* describe('DELETE /flag/articles/:id', () => {
+  describe('DELETE /flag/articles/:id', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/flag/articles/1', (error, response, body) => {
@@ -327,7 +327,24 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('flagged article successfully deleted');
+      expect(data.body.status).toBe('success');
+    });
+  });
+
+  /* describe('DELETE /flag/gifs/:id', () => {
+    const data = {};
+    beforeAll((done) => {
+      Request.del('http://localhost:3000/api/v1/flag/gifs/1', (error, response, body) => {
+        data.status = response.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      });
+    });
+    it('Status 200', () => {
+      expect(data.status).toBe(200);
+    });
+    it('Body', () => {
+      expect(data.body.status).toBe('success');
     });
   });
 
@@ -345,23 +362,6 @@ describe('Server', () => {
     });
     it('Body', () => {
       expect(data.body.message).toBe('flagged comment successfully deleted');
-    });
-  });
-
-  describe('DELETE /flag/gifs/:id', () => {
-    const data = {};
-    beforeAll((done) => {
-      Request.del('http://localhost:3000/api/v1/flag/gifs/1', (error, response, body) => {
-        data.status = response.statusCode;
-        data.body = JSON.parse(body);
-        done();
-      });
-    });
-    it('Status 200', () => {
-      expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.message).toBe('flagged gif successfully deleted');
     });
   });
 

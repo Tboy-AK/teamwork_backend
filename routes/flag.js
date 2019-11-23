@@ -120,7 +120,7 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
 router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
     if (err) { resp.status(403); } else {
-      message = ['Gif flagged as inappropriate', 'gif successfully unflagged'];
+      message = ['Comment flagged as inappropriate', 'Comment successfully unflagged'];
       const id = parseInt(req.params.id, 10);
       const commentID = parseInt(req.params.comment_id, 10);
       const { flag } = req.body;
@@ -155,9 +155,18 @@ router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (re
 });
 
 //  delete flagged article middleware
-router.delete('/flag/articles/:id', (req, resp) => {
-  message = 'flagged article successfully deleted';
-  resp.json({ message });
+router.delete('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else if (authData.admin === adminState[0]) {
+      message = 'Article successfully deleted';
+      const id = parseInt(req.params.id, 10);
+
+      pool.query('DELETE FROM articles WHERE flag=$1 AND id=$2', [flagState[0], id], (error) => {
+        if (error) { throw error; }
+        resp.status(200).send({ status, data: { message } });
+      });
+    } else resp.send('Unauthorized Admin Access!');
+  });
 });
 
 //  delete flagged gif middleware
