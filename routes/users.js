@@ -20,7 +20,8 @@ router.get('/auth/get-users', (req, resp) => {
 //  admin can create an employee user account
 router.post('/auth/create-user', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.status(403); } else if (authData.admin === JSON.stringify(adminState[0])) {
+    if (err) { resp.status(403); }
+    if (authData.admin === adminState[0]) {
       message = 'User account successfully created';
       const {
         firstname, lastname, email, password, gender, jobrole, department, address, admin,

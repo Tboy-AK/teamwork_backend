@@ -259,7 +259,7 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Article flagged as inappropriate');
+      expect(data.body.data.message).toBe('Article flagged as inappropriate');
     });
   });
 

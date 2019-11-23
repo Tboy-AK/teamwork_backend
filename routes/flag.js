@@ -5,10 +5,11 @@ const tokenOrigin = require('../token/token');
 let message;
 const status = 'success';
 const flagState = [true, false];
+const adminState = [true, false];
 
 //  flag article middleware
 router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
-  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
     if (err) { resp.status(403); }
     message = ['Article flagged as inappropriate', 'Article successfully unflagged'];
     const id = parseInt(req.params.id, 10);
@@ -25,7 +26,7 @@ router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
             },
           });
         });
-    } else if (flag === 'false') {
+    } else if (flag === JSON.stringify(flagState[1]) && authData.admin === adminState[0]) {
       pool.query('UPDATE articles SET flag=$1 WHERE id=$2 RETURNING *',
         [flagState[1], id], (error, res) => {
           if (error) { throw error; }
@@ -37,14 +38,44 @@ router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
             },
           });
         });
-    } else { resp.end(); }
+    } else { resp.sendStatus(403); }
   });
 });
 
 //  flag gif middleware
-router.patch('/flag/gifs/:id', (req, resp) => {
-  message = ['Gif flagged as inappropriate', 'gif successfully unflagged'];
-  resp.json({ message: message[0] });
+router.patch('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = ['Gif flagged as inappropriate', 'gif successfully unflagged'];
+      const id = parseInt(req.params.id, 10);
+      const { flag } = req.body;
+      if (flag === JSON.stringify(flagState[0])) {
+        pool.query('UPDATE gifs SET flag=$1 WHERE id=$2 RETURNING *',
+          [flagState[0], id], (error, res) => {
+            if (error) { throw error; }
+            resp.status(201).send({
+              status,
+              data: {
+                message: message[0],
+                gifID: res.rows[0].id,
+              },
+            });
+          });
+      } else if (flag === JSON.stringify(flagState[1]) && authData.admin === adminState[0]) {
+        pool.query('UPDATE gifs SET flag=$1 WHERE id=$2 RETURNING *',
+          [flagState[1], id], (error, res) => {
+            if (error) { throw error; }
+            resp.status(201).send({
+              status,
+              data: {
+                message: message[1],
+                gifID: res.rows[0].id,
+              },
+            });
+          });
+      } else { resp.sendStatus(403); }
+    }
+  });
 });
 
 //  flag article comment middleware
