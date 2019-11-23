@@ -16,7 +16,7 @@ cloudinary.config(tokenOrigin.cloudinaryCred);
 //  flag article middleware
 router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.status(403); }
+    if (err) { throw err; }
     message = ['Article flagged as inappropriate', 'Article successfully unflagged'];
     const id = parseInt(req.params.id, 10);
     const { flag } = req.body;
@@ -51,7 +51,7 @@ router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
 //  flag gif middleware
 router.patch('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.status(403); } else {
+    if (err) { throw err; } else {
       message = ['Gif flagged as inappropriate', 'gif successfully unflagged'];
       const id = parseInt(req.params.id, 10);
       const { flag } = req.body;
@@ -87,7 +87,7 @@ router.patch('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
 //  flag article comment middleware
 router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.status(403); } else {
+    if (err) { throw err; } else {
       message = ['Comment flagged as inappropriate', 'Comment successfully unflagged'];
       const id = parseInt(req.params.id, 10);
       const commentID = parseInt(req.params.comment_id, 10);
@@ -125,7 +125,7 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
 //  flag gif comment middleware
 router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.status(403); } else {
+    if (err) { throw err; } else {
       message = ['Comment flagged as inappropriate', 'Comment successfully unflagged'];
       const id = parseInt(req.params.id, 10);
       const commentID = parseInt(req.params.comment_id, 10);
@@ -163,7 +163,8 @@ router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (re
 //  delete flagged article middleware
 router.delete('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.status(403); } else if (authData.admin === adminState[0]) {
+    if (err) { throw err; }
+    if (authData.admin === adminState[0]) {
       message = 'Article successfully deleted';
       const id = parseInt(req.params.id, 10);
 
@@ -204,7 +205,7 @@ router.delete('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
 //  delete flagged article comment middleware
 router.delete('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
   tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
-    if (err) { resp.sendStatus(403); }
+    if (err) { throw err; }
     if (authData.admin === adminState[0]) {
       message = 'Comment successfully deleted';
       const id = parseInt(req.params.id, 10);
@@ -219,9 +220,20 @@ router.delete('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken
 });
 
 //  delete flagged gif comment middleware
-router.delete('/flag/gifs/:id/comments/:comment_id', (req, resp) => {
-  message = 'flagged comment successfully deleted';
-  resp.json({ message });
+router.delete('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { throw err; }
+    if (authData.admin === adminState[0]) {
+      message = 'Comment successfully deleted';
+      const id = parseInt(req.params.id, 10);
+      const commentID = parseInt(req.params.comment_id, 10);
+
+      pool.query('DELETE FROM gif_comments WHERE flag=$1 AND id=$2 AND gif_id=$3', [flagState[0], commentID, id], (error) => {
+        if (error) { throw error; }
+        resp.status(200).send({ status, data: { message } });
+      });
+    } else resp.send('Unauthorized Admin Access!');
+  });
 });
 
 module.exports = router;
