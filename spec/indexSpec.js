@@ -331,7 +331,7 @@ describe('Server', () => {
     });
   });
 
-  /* describe('DELETE /flag/gifs/:id', () => {
+  describe('DELETE /flag/gifs/:id', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/flag/gifs/1', (error, response, body) => {
@@ -348,7 +348,7 @@ describe('Server', () => {
     });
   });
 
-  describe('DELETE /flag/articles/:id/comments/:comment_id', () => {
+  /* describe('DELETE /flag/articles/:id/comments/:comment_id', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/flag/articles/1/comments/1', (error, response, body) => {

@@ -1,11 +1,17 @@
+const cloudinary = require('cloudinary').v2;
 const { router } = require('../router');
 const pool = require('../elephantsql');
 const tokenOrigin = require('../token/token');
 
+// response message
 let message;
 const status = 'success';
+
 const flagState = [true, false];
 const adminState = [true, false];
+
+// cloudinary configuration
+cloudinary.config(tokenOrigin.cloudinaryCred);
 
 //  flag article middleware
 router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
@@ -170,9 +176,29 @@ router.delete('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  delete flagged gif middleware
-router.delete('/flag/gifs/:id', (req, resp) => {
-  message = 'flagged gif successfully deleted';
-  resp.json({ message });
+router.delete('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (errAuth, authData) => {
+    if (errAuth) { resp.status(403); } else if (authData.admin === adminState[0]) {
+      message = 'Gif post successfully deleted';
+      const id = parseInt(req.params.id, 10);
+
+      pool.query('SELECT * FROM gifs WHERE gifs.flag=$1 AND gifs.id=$2;',
+        [flagState[0], id], (err, res) => {
+          if (err) { throw err; }
+          if (res.rows.length !== 0) {
+            cloudinary.uploader.destroy(res.rows[0].image_url.split('//')[1].split('/')[5].split('.')[0],
+              (errUpDelete) => {
+                if (errUpDelete) { throw errUpDelete; } else {
+                  pool.query('DELETE FROM gifs WHERE id=$1', [res.rows[0].id], (errDelete) => {
+                    if (errDelete) { throw errDelete; }
+                    resp.status(200).send({ status, data: { message } });
+                  });
+                }
+              });
+          } else resp.send('Gif post is not flagged');
+        });
+    } else resp.send('Unauthorized Admin Access!');
+  });
 });
 
 //  delete flagged article comment middleware
