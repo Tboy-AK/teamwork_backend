@@ -14,7 +14,7 @@ router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
     message = ['Article flagged as inappropriate', 'Article successfully unflagged'];
     const id = parseInt(req.params.id, 10);
     const { flag } = req.body;
-    if (flag === 'true') {
+    if (flag === JSON.stringify(flagState[0])) {
       pool.query('UPDATE articles SET flag=$1 WHERE id=$2 RETURNING *',
         [flagState[0], id], (error, res) => {
           if (error) { throw error; }
@@ -79,9 +79,41 @@ router.patch('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
 });
 
 //  flag article comment middleware
-router.patch('/flag/articles/:id/comments/:comment_id', (req, resp) => {
-  message = ['Comment flagged as inappropriate', 'Comment successfully unflagged'];
-  resp.json({ message: message[0] });
+router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = ['Comment flagged as inappropriate', 'Comment successfully unflagged'];
+      const id = parseInt(req.params.id, 10);
+      const commentID = parseInt(req.params.comment_id, 10);
+      const { flag } = req.body;
+
+      if (flag === JSON.stringify(flagState[0])) {
+        pool.query('UPDATE article_comments SET flag=$1 WHERE article_id=$2 AND comment_id=$3 RETURNING *',
+          [true, id, commentID], (error, res) => {
+            if (error) { throw error; }
+            resp.status(201).send({
+              status,
+              data: {
+                message: message[0],
+                articleID: res.rows[0].id,
+              },
+            });
+          });
+      } else if (flag === JSON.stringify(flagState[1]) && authData.admin === adminState[0]) {
+        pool.query('UPDATE article_comments SET flag=$1 WHERE article_id=$2 AND comment_id=$3 RETURNING *',
+          [false, id, commentID], (error, res) => {
+            if (error) { throw error; }
+            resp.status(201).send({
+              status,
+              data: {
+                message: message[1],
+                articleID: res.rows[0].id,
+              },
+            });
+          });
+      } else { resp.sendStatus(403); }
+    }
+  });
 });
 
 //  flag gif comment middleware
