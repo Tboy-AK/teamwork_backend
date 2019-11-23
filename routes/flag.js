@@ -89,7 +89,7 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
 
       if (flag === JSON.stringify(flagState[0])) {
         pool.query('UPDATE article_comments SET flag=$1 WHERE article_id=$2 AND comment_id=$3 RETURNING *',
-          [true, id, commentID], (error, res) => {
+          [flagState[0], id, commentID], (error, res) => {
             if (error) { throw error; }
             resp.status(201).send({
               status,
@@ -101,7 +101,7 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
           });
       } else if (flag === JSON.stringify(flagState[1]) && authData.admin === adminState[0]) {
         pool.query('UPDATE article_comments SET flag=$1 WHERE article_id=$2 AND comment_id=$3 RETURNING *',
-          [false, id, commentID], (error, res) => {
+          [flagState[1], id, commentID], (error, res) => {
             if (error) { throw error; }
             resp.status(201).send({
               status,
@@ -117,9 +117,41 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
 });
 
 //  flag gif comment middleware
-router.patch('/flag/gifs/:id/comments/:comment_id', (req, resp) => {
-  message = ['Comment flagged as inappropriate', 'Comment successfully unflagged'];
-  resp.json({ message: message[0] });
+router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (req, resp) => {
+  tokenOrigin.jwt.verify(req.token, tokenOrigin.tokenKeys.keyPrivate, (err, authData) => {
+    if (err) { resp.status(403); } else {
+      message = ['Gif flagged as inappropriate', 'gif successfully unflagged'];
+      const id = parseInt(req.params.id, 10);
+      const commentID = parseInt(req.params.comment_id, 10);
+      const { flag } = req.body;
+
+      if (flag === JSON.stringify(flagState[0])) {
+        pool.query('UPDATE gif_comments SET flag=$1 WHERE gif_id=$2 AND id=$3 RETURNING *',
+          [flagState[0], id, commentID], (error, res) => {
+            if (error) { throw error; }
+            resp.status(201).send({
+              status,
+              data: {
+                message: message[0],
+                gifID: res.rows[0].id,
+              },
+            });
+          });
+      } else if (flag === JSON.stringify(flagState[1]) && authData.admin === adminState[0]) {
+        pool.query('UPDATE gif_comments SET flag=$1 WHERE gif_id=$2 AND id=$3 RETURNING *',
+          [flagState[1], id, commentID], (error, res) => {
+            if (error) { throw error; }
+            resp.status(201).send({
+              status,
+              data: {
+                message: message[1],
+                gifID: res.rows[0].id,
+              },
+            });
+          });
+      } else { resp.sendStatus(403); }
+    }
+  });
 });
 
 //  delete flagged article middleware

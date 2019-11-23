@@ -263,6 +263,23 @@ describe('Server', () => {
     });
   });
 
+  describe('PATCH /flag/gifs/:id', () => {
+    const data = {};
+    beforeAll((done) => {
+      Request.patch('http://localhost:3000/api/v1/flag/gifs/1', (error, response, body) => {
+        data.status = response.statusCode;
+        data.body = JSON.parse(body);
+        done();
+      });
+    });
+    it('Status 200', () => {
+      expect(data.status).toBe(200);
+    });
+    it('Body', () => {
+      expect(data.body.data.message).toBe('Gif flagged as inappropriate');
+    });
+  });
+
   describe('PATCH /flag/articles/:id/comments/:comment_id', () => {
     const data = {};
     beforeAll((done) => {
@@ -280,23 +297,6 @@ describe('Server', () => {
     });
   });
 
-  /* describe('PATCH /flag/gifs/:id', () => {
-    const data = {};
-    beforeAll((done) => {
-      Request.patch('http://localhost:3000/api/v1/flag/gifs/1', (error, response, body) => {
-        data.status = response.statusCode;
-        data.body = JSON.parse(body);
-        done();
-      });
-    });
-    it('Status 200', () => {
-      expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.message).toBe('Gif flagged as inappropriate');
-    });
-  });
-
   describe('PATCH /flag/gifs/:id/comments/:comment_id', () => {
     const data = {};
     beforeAll((done) => {
@@ -310,11 +310,11 @@ describe('Server', () => {
       expect(data.status).toBe(200);
     });
     it('Body', () => {
-      expect(data.body.message).toBe('Comment flagged as inappropriate');
+      expect(data.body.data.message).toBe('Comment flagged as inappropriate');
     });
   });
 
-  describe('DELETE /flag/articles/:id', () => {
+  /* describe('DELETE /flag/articles/:id', () => {
     const data = {};
     beforeAll((done) => {
       Request.del('http://localhost:3000/api/v1/flag/articles/1', (error, response, body) => {
