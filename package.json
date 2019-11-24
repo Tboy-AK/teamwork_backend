@@ -4,6 +4,7 @@
   "description": "The backend of my DevC Teamwork project.",
   "main": "server.js",
   "scripts": {
+    "start": "node server.js",
     "test-init": "./node_modules/jasmine/bin/jasmine.js init",
     "test": "./node_modules/jasmine/bin/jasmine.js"
   },
@@ -13,6 +14,9 @@
   },
   "author": "Akanji Oluwatobiloba",
   "license": "ISC",
+  "engines": {
+    "node": "10.16.1"
+  },
   "bugs": {
     "url": "https://github.com/Tboy-AK/teamwork_backend/issues"
   },
