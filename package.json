@@ -2,7 +2,7 @@
   "name": "teamwork_backend",
   "version": "1.0.0",
   "description": "The backend of my DevC Teamwork project.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test-init": "./node_modules/jasmine/bin/jasmine.js init",
     "test": "./node_modules/jasmine/bin/jasmine.js"

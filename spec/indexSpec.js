@@ -8,7 +8,7 @@ describe('Server', () => {
   afterAll(() => {
     server.close();
   });
-  /* describe('GET /', () => {
+  describe('GET /', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1', (error, response, body) => {
@@ -25,7 +25,7 @@ describe('Server', () => {
     });
   });
 
-  describe('GET /auth/get-users', () => {
+  /* describe('GET /auth/get-users', () => {
     const data = {};
     beforeAll((done) => {
       Request.get('http://localhost:3000/api/v1/auth/get-users', (error, response, body) => {
@@ -54,9 +54,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('POST /auth/signin', () => {
@@ -70,9 +67,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -88,9 +82,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('POST /articles', () => {
@@ -104,9 +95,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -122,9 +110,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('DELETE /articles/:articleId', () => {
@@ -138,9 +123,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -156,9 +138,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('POST /articles/:id/comments', () => {
@@ -172,9 +151,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -190,9 +166,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('GET /feed', () => {
@@ -206,9 +179,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -224,9 +194,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('GET /gifs/:gifId', () => {
@@ -240,9 +207,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -258,9 +222,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('PATCH /flag/gifs/:id', () => {
@@ -274,9 +235,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -292,9 +250,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('PATCH /flag/gifs/:id/comments/:comment_id', () => {
@@ -308,9 +263,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -326,9 +278,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('DELETE /flag/gifs/:id', () => {
@@ -342,9 +291,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 
@@ -360,9 +306,6 @@ describe('Server', () => {
     it('Status 200', () => {
       expect(data.status).toBe(200);
     });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
-    });
   });
 
   describe('DELETE /flag/gifs/:id/comments/:comment_id', () => {
@@ -376,9 +319,6 @@ describe('Server', () => {
     });
     it('Status 200', () => {
       expect(data.status).toBe(200);
-    });
-    it('Body', () => {
-      expect(data.body.status).toBe('success');
     });
   });
 });
