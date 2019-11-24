@@ -13,9 +13,10 @@ const exp = '4h';
 const verifyToken = (req, resp, next) => {
   const bearerHeader = req.headers.authorization;
   if (typeof bearerHeader !== 'undefined') {
-    const bearer = bearerHeader.split(' ');
-    const bearerToken = bearer[1];
-    req.token = bearerToken;
+    // const bearer = bearerHeader.split(' ');
+    // const bearerToken = bearer[1];
+    // req.token = bearerToken;
+    req.token = bearerHeader;
     next();
   } else {
     resp.status(403);

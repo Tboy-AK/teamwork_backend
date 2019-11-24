@@ -31,7 +31,7 @@ router.post('/auth/create-user', tokenOrigin.verifyToken, (req, resp) => {
       const hash = tokenOrigin.bcrypt.hashSync(password, salt);
 
       pool.query('INSERT INTO users(firstname, lastname, email, password, gender, jobrole, department, address, token, admin) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *;',
-        [firstname, lastname, email, hash, gender, jobrole, department, address, token, admin],
+        [firstname, lastname, email, hash, gender, jobrole, department, address, token, adminState[1]],
         (error, res) => {
           if (error) { throw error; }
           resp.status(201).send({
