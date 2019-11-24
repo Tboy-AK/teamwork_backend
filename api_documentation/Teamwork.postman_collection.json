@@ -1,0 +1,2862 @@
+{
+	"info": {
+		"_postman_id": "b0e54fcc-1091-453f-80ab-f78e2bfbac08",
+		"name": "Teamwork",
+		"description": "Teamwork is an internal social network for employees of an organization. The goal of this\r\napplication is to facilitate more interaction between colleagues and promote team bonding.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "POST /auth/create-user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "text/plain",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjoidHJ1ZSIsImlhdCI6MTU3NDM4MzI1MywiZXhwIjoxNTc0Mzk3NjUzfQ.HPd8IXkHY-AllqmsffeczmMnOJDQOpwDue3jwPQ5cj0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstname",
+									"value": "Dav",
+									"type": "text"
+								},
+								{
+									"key": "lastname",
+									"value": "Cole",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "davkcoleman@teamwork.org",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "gender",
+									"value": "female",
+									"type": "text"
+								},
+								{
+									"key": "jobrole",
+									"value": "Educator",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "R&D",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Ayobo",
+									"type": "text"
+								},
+								{
+									"key": "admin",
+									"value": "false",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/create-user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"create-user"
+							]
+						},
+						"description": "Admin can create an employee user account."
+					},
+					"response": []
+				}
+			],
+			"description": "Admin can create an employee user account.",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "signin",
+			"item": [
+				{
+					"name": "POST /auth/signin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "davkcoleman@teamwork.org",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						},
+						"description": "Admin/Employees can sign in"
+					},
+					"response": [
+						{
+							"name": "POST /auth/signin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "dami.afolabi@teamwork.org",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/auth/signin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"auth",
+										"signin"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "275"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"113-9i3CoYUAHVsGNwwI4y+KwnNKnyU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 14:28:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s\",\n        \"userId\": 4\n    }\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "gif",
+			"item": [
+				{
+					"name": "flag",
+					"item": [
+						{
+							"name": "PATCH /flag/gifs/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "flag",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/gifs/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"gifs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								},
+								"description": "Employees can flag a gif.\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Request spec: (header)</h3>\n{\n\t\"flag\": \"true\" or \"false\" for only admin\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\tmessage: \"Gif flagged successfully\"\n\t\tor\n\t\t\"message\": \"Gif successfully unflagged\" for only admin\n\t}\n}\n"
+							},
+							"response": [
+								{
+									"name": "PATCH /flag/gifs/:id",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "multipart/form-data"
+											},
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "flag",
+													"value": "true",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/v1/flag/gifs/:id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"v1",
+												"flag",
+												"gifs",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "80"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"50-cC1VeUQld0Op6XGoPu+zELQxOzQ\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 23 Nov 2019 04:06:12 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Gif flagged as inappropriate\",\n        \"gifID\": 2\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "PATCH /flag/gifs/:id/comments/:comment_id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "flag",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/gifs/:id/comments/:comment_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"gifs",
+										":id",
+										"comments",
+										":comment_id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										},
+										{
+											"key": "comment_id",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Employees can flag a comment on a gif post.\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Request spec: (header)</h3>\n{\n\t\"flag\": \"true\" or \"false\" for only admin\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\t\"message\": \"Comment flagged successfully\"\n\t\tor\n\t\t\"message\": \"Comment successfully unflagged\" for only admin\n\t}\n}\n"
+							},
+							"response": [
+								{
+									"name": "PATCH /flag/gifs/:id/comments/:comment_id",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "multipart/form-data"
+											},
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "flag",
+													"value": "true",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/v1/flag/gifs/:id/comments/:comment_id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"v1",
+												"flag",
+												"gifs",
+												":id",
+												"comments",
+												":comment_id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												},
+												{
+													"key": "comment_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "84"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"54-vvNX+joDtpeXULHlPiPMCvebTFs\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 23 Nov 2019 04:03:57 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Comment flagged as inappropriate\",\n        \"gifID\": 1\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "Employees can flag gifs andcomments flagged as inappropriate",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "POST /gifs",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "image",
+									"value": "C:/Users/AKANJI OLUWATOBILOBA/Pictures/hsv 1.jpg",
+									"type": "text"
+								},
+								{
+									"key": "title",
+									"value": "hsv color",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/gifs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"gifs"
+							]
+						},
+						"description": "Employees can post gifs."
+					},
+					"response": [
+						{
+							"name": "POST /gifs",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "image",
+											"value": "C:/Users/AKANJI OLUWATOBILOBA/Pictures/hsv 1.jpg",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "hsv color",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/gifs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"gifs"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "223"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"df-8oDE6DBAJSbQVY59kblxV2wwFik\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 15:19:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"gifId\": 3,\n        \"message\": \"GIF image successfully posted\",\n        \"createdOn\": \"11/22/2019\",\n        \"title\": \"hsv color\",\n        \"imageURL\": \"http://res.cloudinary.com/tboy1ak/image/upload/v1574435623/caaztdzoxyniyibufxks.jpg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE gifs/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0NDg0NjIsImV4cCI6MTU3NDQ2Mjg2Mn0.mQa4J25R_HVKoMQ6J_WrYXzJF4DhULP9md2lUQ0i7Js",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/gifs/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"gifs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Employees can delete their articles.\n\n<h3>Request spec: (Header)</h3>\n{\n\t“token”: String,\n\t...\n}\n\n<h3>Response spec:</h3>\n{\n\t“status” : “success”,\n\t“data” : {\n\t\t“message”: “gif post successfully deleted”,\n\t\t...\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "DELETE gifs/:id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0NDg0NjIsImV4cCI6MTU3NDQ2Mjg2Mn0.mQa4J25R_HVKoMQ6J_WrYXzJF4DhULP9md2lUQ0i7Js",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/gifs/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"gifs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-vX3b0DrXPOalkro9NtrUY0ySSjo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 18:48:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Gif post successfully deleted\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "POST /gifs/:id/comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "You've got a scaled form of the image. Cool!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/gifs/:id/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"gifs",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Employees can comment on other colleagues' gif post.\n\n<h3>Request spec: (Header)</h3>\n{\n\t“token”: String,\n\t...\n}\n\n<h3>Request spec: (body)</h3>\n{\n\t“comment”: String,\n\t...\n}\n\n<h3>Response spec:</h3>\n{\n\t“status” : “success”,\n\t“data” : {\n\t\t“message”: “comment successfully created”,\n\t\t“createdOn”: DateTime,\n\t\t“gifTitle”: String,\n\t\t“comment”: String,\n\t\t...\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "POST /gifs/:id/comments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "comment",
+											"value": "You've got a scaled form of the image. Cool!",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/gifs/:id/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"gifs",
+										":id",
+										"comments"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "175"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"af-Zg3ZhTcp4tJ90uMPnRlJ+KZ2KhQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 20:37:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Comment successfully created\",\n        \"createdOn\": \"11/22/2019\",\n        \"gifTitle\": \"hsv color\",\n        \"comment\": \"You've got a scaled form of the image. Cool!\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "GET /gifs/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/gifs/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"gifs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Employees can view a specific gif post.\r\n\r\n<h3>Request spec: (Header)</h3>\r\n{\r\n\t“token”: String,\r\n\t...\r\n}\r\n\r\n<h3>Response spec:</h3>\r\n{\r\n\t“status” : “success”,\r\n\t“data” : {\r\n\t\t“id”: Integer,\r\n\t\t“createdOn”: DateTime,\r\n\t\t“title”: String,\r\n\t\t“url”: String,\r\n\t\t“comments”: [\r\n\t\t\t{\r\n\t\t\t\t“commentId”: Integer,\r\n\t\t\t\t“authorId”: Integer,\r\n\t\t\t\t“comment”: String,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t“commentId”: Integer,\r\n\t\t\t\t“useauthorIdrId”: Integer,\r\n\t\t\t\t“comment”: String,\r\n\t\t\t}\r\n\t\t]\r\n\t}\r\n}\r\n"
+					},
+					"response": [
+						{
+							"name": "GET /gifs/:id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/gifs/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"gifs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "266"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10a-/JW89PJMqSlzdSknY2tn8cJmxFU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 22:07:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"id\": 1,\n        \"createdOn\": \"11/22/2019\",\n        \"title\": \"hsv color\",\n        \"url\": \"http://res.cloudinary.com/tboy1ak/image/upload/v1574396671/hwnokqhgnhzxd1gnasjl.jpg\",\n        \"comments\": [\n            {\n                \"id\": 1,\n                \"comment\": \"You've got a scaled form of the image. Cool!\",\n                \"author_id\": 6\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "articles",
+			"item": [
+				{
+					"name": "flag",
+					"item": [
+						{
+							"name": "PATCH /flag/articles/:id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "flag",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/articles/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"articles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								},
+								"description": "Employees can flag an article..\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Request spec: (header)</h3>\n{\n\t\"flag\": \"true\" or \"false\" for only admin\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\t\"message\": \"Article flagged successfully\"\n\t\tor\n\t\t\"message\": \"Article successfully unflagged\" for only admin\n\t}\n}\n"
+							},
+							"response": [
+								{
+									"name": "PATCH /flag/articles/:id",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"value": "application/x-www-form-urlencoded",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "multipart/form-data",
+												"type": "text"
+											},
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "flag",
+													"value": "true",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/v1/flag/articles/:id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"v1",
+												"flag",
+												"articles",
+												":id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "88"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"58-nn5EMVO/SBzynX/L5ZjLD+d5Zt8\""
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 22 Nov 2019 22:38:46 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Article flagged as inappropriate\",\n        \"articleID\": 2\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "PATCH /flag/articles/:id/comments/:comment_id",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "flag",
+											"value": "true",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/articles/:id/comments/:comment_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"articles",
+										":id",
+										"comments",
+										":comment_id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										},
+										{
+											"key": "comment_id",
+											"value": "1"
+										}
+									]
+								},
+								"description": "Employees can flag a comment on an article..\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Request spec: (header)</h3>\n{\n\t\"flag\": \"true\" or \"false\" for only admin\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\t\"message\": \"Comment flagged successfully\"\n\t\tor\n\t\t\"message\": \"Comment successfully unflagged\" for only admin\n\t}\n}\n"
+							},
+							"response": [
+								{
+									"name": "PATCH /flag/articles/:id/comments/:comment_id",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"name": "Content-Type",
+												"type": "text",
+												"value": "application/x-www-form-urlencoded"
+											},
+											{
+												"key": "Content-Type",
+												"type": "text",
+												"value": "multipart/form-data"
+											},
+											{
+												"key": "Authorization",
+												"type": "text",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+											}
+										],
+										"body": {
+											"mode": "urlencoded",
+											"urlencoded": [
+												{
+													"key": "flag",
+													"value": "true",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "http://localhost:3000/api/v1/flag/articles/:id/comments/:comment_id",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "3000",
+											"path": [
+												"api",
+												"v1",
+												"flag",
+												"articles",
+												":id",
+												"comments",
+												":comment_id"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "2"
+												},
+												{
+													"key": "comment_id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "X-Powered-By",
+											"value": "Express"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "74"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"4a-F0NsgQUBUyoNWVssDEZvBu1RQro\""
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 23 Nov 2019 02:49:03 GMT"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Comment flagged as inappropriate\"\n    }\n}"
+								}
+							]
+						}
+					],
+					"description": "Employees can flag article, gifs and comments as inapprpriate.",
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "POST /articles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "FULL CAPS",
+									"type": "text"
+								},
+								{
+									"key": "article",
+									"value": "Paragraphs: introductory, body, closing, summary. Paragraphs are very important important in writing as they show that you have lots to say and you know how to deliver them based on the messages they send, or intended to send.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/articles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"articles"
+							]
+						},
+						"description": "Employees can write and/or share articles with colleagues on topics of interest to them.\n\n<h3>Request spec: (Header)</h3>\n{\n\t“token”: String,\n\t...\n}\n<h3>Request spec: (Body)</h3>\n{\n\t“title”: String,\n\t“article”: String,\n\t...\n}\n<h3>Response spec:</h3>\n{\n\t“status” : “success”,\n\t“data” : {\n\t\t“message” : “Article successfully posted”,\n\t\t“articleId” : Integer,\n\t\t“createdOn” : DateTime,\n\t\t“title” : String,\n\t\t...\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "POST /articles",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "FULL CAPS",
+											"type": "text"
+										},
+										{
+											"key": "article",
+											"value": "Paragraphs: introductory, body, closing, summary. Paragraphs are very important important in writing as they show that you have lots to say and you know how to deliver them based on the messages they send, or intended to send.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/articles",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"articles"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "128"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"80-PDVFK93D2138Glm3g6kS7g8Yiwo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 15:22:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Article successfully posted\",\n        \"articleId\": 2,\n        \"createdOn\": \"11/22/2019\",\n        \"title\": \"FULL CAPS\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "PATCH /articles/:id",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Who is Big Foot?",
+									"type": "text"
+								},
+								{
+									"key": "article",
+									"value": "A big hairy monster, most probably a giant, but mostly a tall guy in the Captain Man's world.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/articles/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"articles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Employees can edit their articles.\n\n<h3>Request spec: (Header)</h3>\n{\n\t“token”: String,\n\t...\n}\n\n<h3>Request spec: (Body)</h3>\n{\n\t“title”: String,\n\t“article”: String,\n\t...\n}\n\n<h3>Response spec:</h3>\n{\n\t“status” : “success”,\n\t“data” : {\n\t\t“message” : “Article successfully updated”,\n\t\t“title” : String,\n\t\t“article” : String,\n\t\t...\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "PATCH /articles/:id",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Who is Big Foot?",
+											"type": "text"
+										},
+										{
+											"key": "article",
+											"value": "A big hairy monster, most probably a giant, but mostly a tall guy in the Captain Man's world.",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/articles/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"articles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "203"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cb-munkZBRkmnQi/gx7R0RnZ/Daocg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 14:54:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Article successfully updated\",\n        \"title\": \"Who is Big Foot?\",\n        \"article\": \"A big hairy monster, most probably a giant, but mostly a tall guy in the Captain Man's world.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE articles/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/articles/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"articles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "<h3>Request spec: (Header)</h3>\r\n{\r\n\t“token”: String,\r\n\t...\r\n}\r\n\r\n<h3>Response spec:</h3>\r\n{\r\n\t“status” : “success”,\r\n\t“data” : {\r\n\t\t“message”: “Article successfully deleted”,\r\n\t\t...\r\n\t}\r\n}\r\n"
+					},
+					"response": [
+						{
+							"name": "DELETE articles/:id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbWkuYWZvbGFiaUB0ZWFtd29yay5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYWRtaW4iOmZhbHNlLCJpYXQiOjE1NzQ0MzI5MDUsImV4cCI6MTU3NDQ0NzMwNX0.wHtrlGQmOhMVySevXJrjN03bqMMwzJQZCggRDY5Ve3s",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/articles/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"articles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-mAI58wiOUQp3BTvqDi4ChLFeUs8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 16:16:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Article successfully deleted\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "POST /articles/:id/article_comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "comment",
+									"value": "Hello!",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/articles/:id/comments",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"articles",
+								":id",
+								"comments"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Employees can comment on other colleagues' article post\n\n<h3>Request spec: (Header)</h3>\n{\n\t“token”: String,\n\t...\n}\n\n<h3>Request spec: (body)</h3>\n{\n\t“comment”: String,\n\t...\n}\n\n<h3>Response spec:</h3>\n{\n\t“status” : “success”,\n\t“data” : {\n\t\t“message”: “Comment successfully created”,\n\t\t“createdOn”: DateTime,\n\t\t“articleTitle”: String,\n\t\t“article”: String,\n\t\t“comment”: String,\n\t\t...\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "POST /articles/:id/article_comments",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "comment",
+											"value": "Hello!",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/articles/:id/comments",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"articles",
+										":id",
+										"comments"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "353"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"161-XOcgsF2sok5m/KgTBVd0XFH2Kxg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 20:30:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Comment successfully created\",\n        \"createdOn\": \"11/22/2019\",\n        \"article\": \"Paragraphs: introductory, body, closing, summary. Paragraphs are very important important in writing as they show that you have lots to say and you know how to deliver them based on the messages they send, or intended to send.\",\n        \"comment\": \"Hello!\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "GET /articles/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/articles/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"articles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								}
+							]
+						},
+						"description": "Employees can view a specific article.\r\n\r\n<h3>Request spec: (Header)</h3>\r\n{\r\n\t“token”: String,\r\n\t...\r\n}\r\n\r\n<h3>Response spec:</h3>\r\n{\r\n\t“status” : “success”,\r\n\t“data” : {\r\n\t\t“id”: Integer,\r\n\t\t“createdOn”: DateTime,\r\n\t\t“title”: String,\r\n\t\t“article”: String,\r\n\t\t“comments”: [\r\n\t\t\t{\r\n\t\t\t\t“commentId”: Integer,\r\n\t\t\t\t“comment”: String,\r\n\t\t\t\t“authorId” : Integer,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t“commentId”: Integer,\r\n\t\t\t\t“comment”: String,\r\n\t\t\t\t“authorId” : Integer,\r\n\t\t\t},\r\n\t\t]\r\n\t}\r\n}\r\n"
+					},
+					"response": [
+						{
+							"name": "GET /articles/:id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/articles/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"articles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "471"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d7-Wde/CqyNk5MpqQQjjM1evTyuAaQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 21:51:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"id\": 2,\n        \"createdOn\": \"11/22/2019\",\n        \"title\": \"FULL CAPS\",\n        \"article\": \"Paragraphs: introductory, body, closing, summary. Paragraphs are very important important in writing as they show that you have lots to say and you know how to deliver them based on the messages they send, or intended to send.\",\n        \"comments\": [\n            {\n                \"comment_id\": 1,\n                \"comment\": \"I thought we were talking about the Bigfoot.\",\n                \"author_id\": 6\n            },\n            {\n                \"comment_id\": 2,\n                \"comment\": \"Hello!\",\n                \"author_id\": 6\n            }\n        ]\n    }\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "feed",
+			"item": [
+				{
+					"name": "GET /feed",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/v1/feed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"feed"
+							]
+						},
+						"description": "Employees can view all articles or gifs, showing the most recently posted articles or gifs first.\r\n\r\n<h3>Request spec: (Header)</h3>\r\n{\r\n\t“token”: String,\r\n\t...\r\n}\r\n\r\n<h3>Response spec:</h3>\r\n{\r\n\t“status” : “success”,\r\n\t\t“data” : [\r\n\t\t\t{\r\n\t\t\t\t“id”: Integer,\r\n\t\t\t\t“createdOn”: DateTime,\r\n\t\t\t\t“title”: String,\r\n\t\t\t\t“article/url”: String, //use url for gif post and article for articles\r\n\t\t\t\t“authorId” : Integer,\r\n\t\t\t\t...\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t“id”: Integer,\r\n\t\t\t\t“createdOn”: DateTime,\r\n\t\t\t\t“title”: String,\r\n\t\t\t\t“article/url”: String, //use url for gif post and article for articles\r\n\t\t\t\t“authorId” : Integer,\r\n\t\t\t\t...\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t“id”: Integer,\r\n\t\t\t\t“createdOn”: DateTime,\r\n\t\t\t\t“title”: String,\r\n\t\t\t\t“article/url”: String, //use url for gif post and article for articles\r\n\t\t\t\t“authorId” : Integer,\r\n\t\t\t\t...\r\n\t\t\t},\r\n\t\t}\r\n\t]\r\n}"
+					},
+					"response": [
+						{
+							"name": "GET /feed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ1MjY1MiwiZXhwIjoxNTc0NDY3MDUyfQ.tuxHBAkI5YmcdMJ24LC3mbC4IJK-1araQwKUrhTitr4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:3000/api/v1/feed",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"feed"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "706"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c2-KV8tMBk/xLB+kma+FJ2tLH9Pv+w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Nov 2019 21:13:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"created_on\": \"11/22/2019\",\n            \"title\": \"hsv color\",\n            \"article\": \"http://res.cloudinary.com/tboy1ak/image/upload/v1574396671/hwnokqhgnhzxd1gnasjl.jpg\",\n            \"author_id\": 4,\n            \"flag\": false\n        },\n        {\n            \"id\": 2,\n            \"created_on\": \"11/22/2019\",\n            \"title\": \"FULL CAPS\",\n            \"article\": \"Paragraphs: introductory, body, closing, summary. Paragraphs are very important important in writing as they show that you have lots to say and you know how to deliver them based on the messages they send, or intended to send.\",\n            \"author_id\": 4,\n            \"flag\": false\n        },\n        {\n            \"id\": 2,\n            \"created_on\": \"11/22/2019\",\n            \"title\": \"hsv color\",\n            \"article\": \"http://res.cloudinary.com/tboy1ak/image/upload/v1574396837/rsln637osdxdcnmkmsew.jpg\",\n            \"author_id\": 4,\n            \"flag\": false\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "flagged",
+			"item": [
+				{
+					"name": "DELETE /flag/articles/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0NzM0NjMsImV4cCI6MTU3NDQ4Nzg2M30.Kb5egOoAfP9mPcsrSx8loIf0Z1fcye_5y3BZWSbUzOg"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/flag/articles/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"flag",
+								"articles",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						},
+						"description": "Employees can flag an article.\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\tmessage: \"Article successfully deleted\"\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "PATCH /flag/articles/:id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0NzM0NjMsImV4cCI6MTU3NDQ4Nzg2M30.Kb5egOoAfP9mPcsrSx8loIf0Z1fcye_5y3BZWSbUzOg"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/articles/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"articles",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-mAI58wiOUQp3BTvqDi4ChLFeUs8\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Nov 2019 04:49:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Article successfully deleted\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE /flag/gifs/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0OTAxMTcsImV4cCI6MTU3NDUwNDUxN30.bEWUeTxEw4jfiaPQUmkH8z_Em5mZatPNboYuSnEPhFc"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/flag/gifs/:id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"flag",
+								"gifs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						},
+						"description": "Employees can flag a gif.\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\tmessage: \"Gif successfully deleted\"\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "PATCH /flag/gifs/:id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0OTAxMTcsImV4cCI6MTU3NDUwNDUxN30.bEWUeTxEw4jfiaPQUmkH8z_Em5mZatPNboYuSnEPhFc"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/gifs/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"gifs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"47-vX3b0DrXPOalkro9NtrUY0ySSjo\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Nov 2019 06:28:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Gif post successfully deleted\"\n    }\n}"
+						},
+						{
+							"name": "PATCH /flag/gifs/:id (wrong info)",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0OTAxMTcsImV4cCI6MTU3NDUwNDUxN30.bEWUeTxEw4jfiaPQUmkH8z_Em5mZatPNboYuSnEPhFc"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/gifs/:id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"gifs",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"17-Q2NCCW4F4MVsoRGNvy/jZFicAWM\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Nov 2019 06:22:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Gif post is not flagged"
+						}
+					]
+				},
+				{
+					"name": "DELETE /flag/articles/:id/comments/:comment_id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0OTAxMTcsImV4cCI6MTU3NDUwNDUxN30.bEWUeTxEw4jfiaPQUmkH8z_Em5mZatPNboYuSnEPhFc"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/flag/articles/:id/comments/:comment_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"flag",
+								"articles",
+								":id",
+								"comments",
+								":comment_id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "2"
+								},
+								{
+									"key": "comment_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Employees can flag a comment on an article.\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\tmessage: \"Comment successfully deleted\"\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "DELETE /flag/articles/:id/comments/:comment_id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0OTAxMTcsImV4cCI6MTU3NDUwNDUxN30.bEWUeTxEw4jfiaPQUmkH8z_Em5mZatPNboYuSnEPhFc"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/articles/:id/comments/:comment_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"articles",
+										":id",
+										"comments",
+										":comment_id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "2"
+										},
+										{
+											"key": "comment_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-dlEJFK/moz9Fs1CQmC5yH/cXXvk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Nov 2019 06:58:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Comment successfully deleted\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DELETE /flag/gifs/:id/comments/:comment_id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "multipart/form-data"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmtjb2xlbWFuQHRlYW13b3JrLm9yZyIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhZG1pbiI6ZmFsc2UsImlhdCI6MTU3NDQ3MjA5MCwiZXhwIjoxNTc0NDg2NDkwfQ.KoqY4tWur9NyKvUqzgYq6l3EsiQfC4KgeAejsgLHoK8"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "flag",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/v1/flag/gifs/:id/comments/:comment_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"v1",
+								"flag",
+								"gifs",
+								":id",
+								"comments",
+								":comment_id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "comment_id",
+									"value": "1"
+								}
+							]
+						},
+						"description": "Employees can flag a comment on a gif post.\n\n<h3>Request spec: (header)</h3>\n{\n\t\"token\": \"string\"\n}\n\n<h3>Response spec: </h3>\n{\n\t\"status\": \"success\"\n\t\"data\": {\n\t\tmessage: \"Comment successfully deleted\"\n\t}\n}\n"
+					},
+					"response": [
+						{
+							"name": "DELETE /flag/gifs/:id/comments/:comment_id",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									},
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "multipart/form-data"
+									},
+									{
+										"key": "Authorization",
+										"type": "text",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvYmlhODA3QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoieHh4ZW50cmljNDMyMSIsImFkbWluIjp0cnVlLCJpYXQiOjE1NzQ0OTAxMTcsImV4cCI6MTU3NDUwNDUxN30.bEWUeTxEw4jfiaPQUmkH8z_Em5mZatPNboYuSnEPhFc"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": []
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/v1/flag/gifs/:id/comments/:comment_id",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"v1",
+										"flag",
+										"gifs",
+										":id",
+										"comments",
+										":comment_id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "1"
+										},
+										{
+											"key": "comment_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "70"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46-dlEJFK/moz9Fs1CQmC5yH/cXXvk\""
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Nov 2019 07:23:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\",\n    \"data\": {\n        \"message\": \"Comment successfully deleted\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Admin can delete articles, gifs and comments flagged as inappropriate.",
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
