@@ -1,10 +1,10 @@
 const app = require('./app');
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 //  app.listen(port, () => { console.log(`App running on port ${port}.`); });
 
-module.exports = app.listen(port, () => { console.log(`App running on port ${port}.`); });
+module.exports = app.listen(PORT, () => { console.log(`App running on PORT ${PORT}.`); });
 /*
 
 https.createServer(options, app).listen(3000, () => {
