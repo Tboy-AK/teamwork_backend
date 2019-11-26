@@ -24,7 +24,7 @@ router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
       pool.query('UPDATE articles SET flag=$1 WHERE id=$2 RETURNING *',
         [flagState[0], id], (error, res) => {
           if (error) { throw error; }
-          resp.status(201).send({
+          resp.status(200).send({
             status,
             data: {
               message: message[0],
@@ -36,7 +36,7 @@ router.patch('/flag/articles/:id', tokenOrigin.verifyToken, (req, resp) => {
       pool.query('UPDATE articles SET flag=$1 WHERE id=$2 RETURNING *',
         [flagState[1], id], (error, res) => {
           if (error) { throw error; }
-          resp.status(201).send({
+          resp.status(200).send({
             status,
             data: {
               message: message[1],
@@ -59,7 +59,7 @@ router.patch('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
         pool.query('UPDATE gifs SET flag=$1 WHERE id=$2 RETURNING *',
           [flagState[0], id], (error, res) => {
             if (error) { throw error; }
-            resp.status(201).send({
+            resp.status(200).send({
               status,
               data: {
                 message: message[0],
@@ -71,7 +71,7 @@ router.patch('/flag/gifs/:id', tokenOrigin.verifyToken, (req, resp) => {
         pool.query('UPDATE gifs SET flag=$1 WHERE id=$2 RETURNING *',
           [flagState[1], id], (error, res) => {
             if (error) { throw error; }
-            resp.status(201).send({
+            resp.status(200).send({
               status,
               data: {
                 message: message[1],
@@ -97,7 +97,7 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
         pool.query('UPDATE article_comments SET flag=$1 WHERE article_id=$2 AND comment_id=$3 RETURNING *',
           [flagState[0], id, commentID], (error, res) => {
             if (error) { throw error; }
-            resp.status(201).send({
+            resp.status(200).send({
               status,
               data: {
                 message: message[0],
@@ -109,7 +109,7 @@ router.patch('/flag/articles/:id/comments/:comment_id', tokenOrigin.verifyToken,
         pool.query('UPDATE article_comments SET flag=$1 WHERE article_id=$2 AND comment_id=$3 RETURNING *',
           [flagState[1], id, commentID], (error, res) => {
             if (error) { throw error; }
-            resp.status(201).send({
+            resp.status(200).send({
               status,
               data: {
                 message: message[1],
@@ -135,7 +135,7 @@ router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (re
         pool.query('UPDATE gif_comments SET flag=$1 WHERE gif_id=$2 AND id=$3 RETURNING *',
           [flagState[0], id, commentID], (error, res) => {
             if (error) { throw error; }
-            resp.status(201).send({
+            resp.status(200).send({
               status,
               data: {
                 message: message[0],
@@ -147,7 +147,7 @@ router.patch('/flag/gifs/:id/comments/:comment_id', tokenOrigin.verifyToken, (re
         pool.query('UPDATE gif_comments SET flag=$1 WHERE gif_id=$2 AND id=$3 RETURNING *',
           [flagState[1], id, commentID], (error, res) => {
             if (error) { throw error; }
-            resp.status(201).send({
+            resp.status(200).send({
               status,
               data: {
                 message: message[1],
