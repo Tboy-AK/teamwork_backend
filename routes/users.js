@@ -53,7 +53,7 @@ router.post('/auth/signin', (req, resp) => {
       const passwordState = tokenOrigin.bcrypt.compareSync(password, res.rows[0].password);
       if (passwordState === true) {
         const token = tokenOrigin.jwt.sign({ email, password, admin: res.rows[0].admin }, tokenOrigin.tokenKeys.keyPrivate, { expiresIn: tokenOrigin.exp });
-        resp.status(200).send({
+        resp.status(201).send({
           status,
           data: { token, userId: res.rows[0].user_id },
         });
