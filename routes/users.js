@@ -37,6 +37,10 @@ router.post('/auth/create-user', tokenOrigin.verifyToken, (req, resp) => {
           resp.status(201).send({
             status,
             data: { message, token: res.rows[0].token, userId: res.rows[0].user_id },
+          }).cookie('token', token, {
+            expires: new Date.now() + 14400000,
+            secure: true,
+            httpOnly: true,
           });
         });
     } else resp.json({ info: 'Unauthorized Admin Access!' });
